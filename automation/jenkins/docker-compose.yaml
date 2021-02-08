@@ -1,0 +1,15 @@
+version: '3'
+services:
+  jenkins:
+    container_name: jenkins
+    image: jenkins-ansible:version2
+    ports:
+      - "50000:50000"
+    volumes:
+      - $PWD/jenkins_home:/var/jenkins_home
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/hosts:/etc/hosts:ro
+    networks:
+      - net
+networks:
+  net:
