@@ -1,0 +1,8 @@
+[all:vars]
+ansible_connection = ssh
+
+[CentOS07]
+ubuntumain01 ansible_host=10.0.2.15 ansible_user=root ansible_password=vagrant
+
+[CentOS07:vars]
+ansible_connection = ssh

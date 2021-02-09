@@ -1,0 +1,10 @@
+- hosts:           "{{HOSTNAME| trim }}"
+  gather_facts:    False
+  become:          yes
+
+  tasks:
+    - name:        (1) Check Hostname
+      shell:       hostname
+      register:    hostname_check
+    - debug:
+        msg:        "Hostname: {{ hostname_check.stdout }}"

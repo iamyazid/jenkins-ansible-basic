@@ -9,11 +9,13 @@ Vagrant.configure("2") do |config|
 
  config.vm.hostname = "ubuntumain01"
  config.vm.network "forwarded_port", guest: 8000, host: 8000
- config.vm.synced_folder "automation", "/guset/home/"
+ config.vm.synced_folder "automation", "/home/automation"
 
  config.vm.provision "shell", inline: <<-SHELL
    systemctl disable apt-daily.service
    systemctl disable apt-daily.timer
+
+   sudo ssh-keygen -t rsa -f "/root/.ssh/id_rsa" -P "" && sudo cat /root/.ssh/id_rsa.pub
 
    echo -e "vagrant\nvagrant" | passwd root
    echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
